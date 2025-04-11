@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%; /*브라우저 사이즈 따라가도록 100%로 리셋*/
+    font-weight: normal;
+}
+
+/* 공통으로 사용할 디자인 */
+/* float 해제를 위한 클래스 */
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+}
+.container {
+    background-color: seashell;
+    padding: 100px 0;
+}
+
+ /* recipe */
+.recipe {
+    width: 1280px;
+    margin: 0 auto;
+}
+.recipe .title {
+    margin-bottom: 50px;
+}
+.recipe .title h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+.recipe .title p {
+    font-size: 20px;
+    color: #555;
+}
+.recipe .content {
+    /* margin: 0 -20px; */
+}
+/* float된 요소에 width값이 설정되지 않았을 경우, 내용만큼의 width 가지게 된다 */
+.recipe .content .box {
+    margin-bottom: 2%;/*아래 마진이어도 너비 기준 2%임!!*/
+    float: left;
+    /* 1) 전체 공간의 1/4를 너비로 사용 */
+    /* width: 25%;
+    padding: 0 20px;
+    box-sizing: border-box; */
+    /* 2) 여백을 제외한 너비 설정: 계산해서넣고 first/lastchild로 마진빼기 */
+    width: 23.5%;
+    /* margin-right: 2%; */
+}
+/* .recipe .content .box:last-child {
+    margin-right: 0;
+} */
+ /* 3) 형제요소 선택자! 첫째빼고 다선택*/
+ .recipe .content .box~.box {
+    margin-left: 2%;
+ }
+ /* 4) 박스가 추가된다면.. 4n+1번째마다 선택해서 마진 설정 */
+ .recipe .content .box:nth-child(4n+1) {
+    margin-left: 0;
+ }
+.recipe .content .box img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.recipe .content .box h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.recipe .content .box h3 a {
+    color: #333;
+}
+.recipe .content .box h3 a:hover {
+    text-decoration: underline;
+    color: tomato;
+}
+.recipe .content .box p {
+    font-size: 18px;
+    color: #666;
+}
